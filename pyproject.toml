@@ -3,14 +3,24 @@ requires = ["maturin==1.7.0"]
 build-backend = "maturin"
 
 [project]
-dynamic = ["version"]
 name = "genome_rspy"
+dynamic = ["version"]
+authors = [
+    {name = "Sam Wagenaar"}
+]
+description = "Index and search through large genetic sequences"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 classifiers=[
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
 ]
 
 [project.urls]
-"Source code" = "https://github.com/techno-sam/python_genetics_experiments"
+Repository = "https://github.com/techno-sam/genome_rspy.git"
+Issues = "https://github.com/techno-sam/genome_rspy/issues"
