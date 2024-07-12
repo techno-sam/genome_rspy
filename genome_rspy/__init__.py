@@ -61,6 +61,7 @@ def _interruptable(func, args=(), kwargs={}, result_converter = lambda x: x):
 
 _parse_chromosomes = parse_chromosomes
 def parse_chromosomes(fasta_path: str, storage_dir: str, index_size: int = 8, num_threads: int = None) -> list[tuple[str, Exception | None]]:
+    """Given a path to a fasta file and a directory to store chromosomes in, loads and indexes chromosomes and returns a list of the names of the loaded chromosomes"""
     return _interruptable(
             _parse_chromosomes,
             args=(fasta_path, storage_dir, index_size, _get_num_threads(num_threads))
@@ -104,6 +105,7 @@ def _convert_hit_records(old: list[_HitRecord]) -> list[HitRecord]:
 
 _search_chromosome = search_chromosome
 def search_chromosome(reads_path: str, chromosome_name: str, storage_dir: str, kmer_length: int = 31, num_threads: int = None) -> list[HitRecord]:
+    """Search a pre-indexed chromosome for `kmer_length`-long subsequences of the sequences held in the fasta file specified by `reads_path`"""
     out = _interruptable(
             _search_chromosome,
             args=(reads_path, chromosome_name, storage_dir, kmer_length, _get_num_threads(num_threads)),
@@ -124,7 +126,7 @@ if hasattr(genome_rspy, "__all__"):
 
 del genome_rspy
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Sam Wagenaar (techno-sam)"
 __copyright__ = "Copyright 2024, Sam Wagenaar"
 __license__ = "GPL"

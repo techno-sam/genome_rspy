@@ -186,10 +186,10 @@ pub fn parse_chromosomes(fasta_path: &Path, storage_dir: &Path, index_size: usiz
     println!("Parsing chromosomes");
 
     return Ok(parsed.0.into_par_iter()
-        .filter(|(label, _)| label == "5 dna:chromosome chromosome:GRCh38:5:1:181538259:1 REF") // FIXME:
+        /*.filter(|(label, _)| label == "5 dna:chromosome chromosome:GRCh38:5:1:181538259:1 REF") // FI-XME:
                                                                                                 // remove
                                                                                                 // before
-                                                                                                // release
+                                                                                                // release */
         .map(|(label, seq)| {
             println!("> Parsing chromosome '{}'", &label);
             let chromosome = Chromosome::new(&label, &seq, index_size);
@@ -366,7 +366,7 @@ pub fn search_chromosome_general<'a>(
             return occurrences;
         })
         .flatten_iter()
-        .take_any(5) // FIXME: remove this after done testing
+        //.take_any(5) // FIX-ME: remove this after done testing
         .collect();
 
     return Ok(out);
@@ -425,7 +425,7 @@ pub fn search_chromosome<'a>(
             return occurrences;
         })
         .flatten_iter()
-        .take_any(5) // FIXME: remove this after done testing
+        //.take_any(5) // FIX-ME: remove this after done testing
         .collect();
 
     return Ok(out);
