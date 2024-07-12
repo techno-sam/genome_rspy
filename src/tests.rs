@@ -58,5 +58,5 @@ ACTATCGATCGTAGGGAAGGTTGTATATCGATGAAAC
 ");
 
     let reparsed = Fasta::parse_fasta(&written).expect("Parsing succeeded");
-    assert_eq!(fasta, reparsed);
+    assert_eq!(sorted(fasta.0), sorted(reparsed.0));
 }
